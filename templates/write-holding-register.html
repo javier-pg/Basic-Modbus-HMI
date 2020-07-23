@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+
+<head>
+	<title>SCADA MANAGEMENT</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{{ url_for('static',filename='img/favicon.ico') }}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/bootstrap.min.css') }}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/font-awesome.min.css') }}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/icon-font.min.css') }}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/animate.css') }}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/hamburgers.min.css') }}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/animsition.min.css') }}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/select2.min.css') }}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/daterangepicker.css') }}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/util.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/main.css') }}">
+	<!--===============================================================================================-->
+</head>
+
+<body>
+
+	<style>
+		p {
+			text-align: center;
+			background-color: yellow;
+		}
+
+		body {
+			background-image: url({{ url_for('static',filename='img/background2.jpg')
+		}
+		}
+
+		);
+		}
+	</style>
+
+	<div class="container">
+
+		<body>
+			<div class="limiter">
+				{% if error %}
+				<p class=error><strong>Error:</strong> {{ error }}
+					{% endif %}
+
+				<div class="container-login100">
+					<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+
+						<h2 style="text-align: center;">Write Holding Register</h2>
+						<h6 style="text-align: center;"> {{ address }} : {{ port }}</h6>
+						<br>
+						<form action="/{{ address }}:{{ port }}/write-holding-register" method="post" role="form">
+							{{ form.csrf }}
+							<div class="login100-form validate-form flex-sb flex-w">
+
+
+								<span class="txt1 p-b-11">
+									Start Address
+								</span>
+
+								<div class="wrap-input100 validate-input m-b-36">
+									<input class="input100" type="number" min="0" name="address" id="address"
+										placeholder="Starting address to read from"
+										required="Start Address is required">
+									<span class="focus-input100"></span>
+								</div>
+
+
+								<span class="txt1 p-b-11">
+									Register value to write (0 to 65535)
+								</span>
+
+								<div class="wrap-input100 validate-input m-b-36">
+									<input class="input100" type="number" min="0" max="65535" name="value" id="value"
+										placeholder="Register value to write" required="Register value is required">
+									<span class="focus-input100"></span>
+								</div>
+
+								<span class="txt1 p-b-11">
+									Slave unit
+								</span>
+
+								<div class="wrap-input100 validate-input m-b-36">
+									<input class="input100" type="number" min="0" name="unitId" id="unitId"
+										placeholder="Number of the slave" required="Number of the slave is required">
+									<span class="focus-input100"></span>
+								</div>
+
+
+
+
+							</div>
+							<div class="container-login100-form-btn">
+								<button type="submit" class="login100-form-btn">
+									WRITE
+								</button>
+							</div>
+						</form>
+
+						<h4><br></h4>
+
+						<form action="/{{ address }}:{{ port }}" method="get">
+							<button class="login100-form-btn">BACK</button>
+						</form>
+
+						<br>
+						{% with messages = get_flashed_messages(with_categories=true) %}
+						{% if messages %}
+
+						{% for message in messages %}
+						{% if "Error" not in message[1]: %}
+						<div class="alert alert-info">
+							{{ message[1] }}
+						</div>
+						{% endif %}
+
+						{% if "Error" in message[1]: %}
+						<div class="alert alert-warning">
+							{{ message[1] }}
+						</div>
+						{% endif %}
+						{% endfor %}
+						{% endif %}
+						{% endwith %}
+
+					</div>
+					<br>
+				</div>
+			</div>
+		</body>
+
+		<!--===============================================================================================-->
+		<script src="{{ url_for('static',filename='js/jquery-3.2.1.min.js') }}"></script>
+		<!--===============================================================================================-->
+		<script src="{{ url_for('static',filename='js/animsition.min.js') }}"></script>
+		<!--===============================================================================================-->
+		<script src="{{ url_for('static',filename='js/popper.js') }}"></script>
+		<script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+		<!--===============================================================================================-->
+		<script src="{{ url_for('static',filename='js/select2.min.js') }}"></script>
+		<!--===============================================================================================-->
+		<script src="{{ url_for('static',filename='js/moment.min.js') }}"></script>
+		<script src="{{ url_for('static',filename='js/daterangepicker.js') }}"></script>
+		<!--===============================================================================================-->
+		<script src="{{ url_for('static',filename='js/countdowntime.js') }}"></script>
+		<!--===============================================================================================-->
+		<script src="{{ url_for('static',filename='js/main.js') }}"></script>
+
+</html>

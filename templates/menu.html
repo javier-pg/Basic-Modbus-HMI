@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>SCADA Management</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{{ url_for('static',filename='img/favicon.ico') }}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/bootstrap.min.css') }}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/font-awesome.min.css') }}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/icon-font.min.css') }}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/animate.css') }}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/hamburgers.min.css') }}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/animsition.min.css') }}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/select2.min.css') }}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/daterangepicker.css') }}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/util.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/main.css') }}">
+	<!--===============================================================================================-->
+</head>
+
+<style>
+	body {
+		background-image: url({{ url_for('static',filename='img/background2.jpg')
+	}
+	}
+
+	);
+	}
+</style>
+
+
+<body>
+	<div class="limiter">
+
+		<div class="container-login100">
+			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+				<h3 style="text-align: center;">OPERATIONS PANEL</h3>
+				<h6 style="text-align: center;"> {{ address }} : {{ port }}</h6>
+				<h4><br></h4>
+				<a href="/{{ address }}:{{ port }}/read-discrete-inputs">
+					<h4 style="text-align: center;">Read discrete inputs</h4>
+				</a>
+				<a href="/{{ address }}:{{ port }}/read-coils">
+					<h4 style="text-align: center;">Read coils</h4>
+				</a>
+				<a href="/{{ address }}:{{ port }}/read-holding-registers">
+					<h4 style="text-align: center;">Read holding registers</h4>
+				</a>
+				<a href="/{{ address }}:{{ port }}/read-input-registers">
+					<h4 style="text-align: center;">Read input registers</h4>
+				</a>
+				<h4><br></h4>
+				<a href="/{{ address }}:{{ port }}/write-coil">
+					<h4 style="text-align: center;">Write coil</h4>
+				</a>
+				<a href="/{{ address }}:{{ port }}/write-holding-register">
+					<h4 style="text-align: center;">Write holding register</h4>
+				</a>
+				<h1><br></h1>
+
+				<form action="/" method="get">
+					<button class="login100-form-btn">QUIT</button>
+				</form>
+
+			</div>
+
+
+		</div>
+
+	</div>
+
+</html>
