@@ -1,5 +1,4 @@
 pymodbus==1.5.2
-Flask==0.12.2
+Flask==1.1.2
 WTForms==2.2
 six==1.15.0
-
